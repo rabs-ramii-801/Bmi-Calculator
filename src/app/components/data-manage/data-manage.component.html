@@ -1,0 +1,39 @@
+<div class="content">
+    <form #newform="ngForm" (ngSubmit)="save(newform)">
+        <div class="field d-flex ms-1">
+            <label>Age: </label>
+            <input type="text" placeholder="Enter your Age" name="age" [(ngModel)]="model.age" required>
+            <select [(ngModel)]="model.ageUnit" name="ageUnit">
+                <option value="years">Years</option>
+            </select>
+        </div>
+
+        <div class="field d-flex ms-1">
+            <label>Weight: </label>
+            <input type="text" placeholder="Enter your Weight" name="weight" [(ngModel)]="model.weight" required>
+            <select [(ngModel)]="model.weightUnit" name="weightUnit">
+                <option value="kg" selected>Kg</option>
+                <option value="pounds">Pounds</option>
+            </select>
+        </div>
+
+        <div class="field d-flex ms-1">
+            <label>Height: </label>
+            <input type="text" placeholder="Enter your Height" name="height" [(ngModel)]="model.height" required>
+            <select [(ngModel)]="model.heightUnit" name="heightUnit">
+                <option value="cm" selected>cm</option>
+                <option value="m">m</option>
+                <option value="ft">ft</option>
+            </select>
+        </div>
+
+        <button type="submit" [disabled]="newform.invalid">Calculate</button>
+    </form>
+
+    <div  class="field d-flex mt-4">
+        <span class="bmi-label">Your BMI :</span>
+        <span class="bmi-color" [ngStyle]="{'background-color': backgroundColor}">{{ bmi }}</span>
+    </div>
+
+    <span  class="mt-2" style="font-weight: bold;">BMI Status: {{ bmiStatus }}</span>
+</div>
